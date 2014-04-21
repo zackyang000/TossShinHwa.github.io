@@ -1,0 +1,977 @@
+<!doctype html>
+<html ng-cloak="" ng-app="app" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title ng-bind="config.siteName">Loading...</title>
+    <script src="/plugin/ckeditor_3.6.1/ckeditor.js"></script>
+    <base href="/admin/">
+    <!--STYLES-->
+    <link href="/admin-index.css?v=1398082603091" rel="stylesheet">
+    <!--STYLES END-->
+    <!--SCRIPTS-->
+    <script src="/admin-index.js?v=1398082603091"></script>
+    <!--SCRIPTS END-->
+    <!--LIVERELOAD-->
+</head>
+<body ng-class="{'login-layout':__logoff , 'navbar-fixed breadcrumbs-fixed':__login}">
+
+    <div ng-show="__login" ng-controller="MainCtrl">
+        <div class="loadingbox" zy-when-route-change="">Loading</div>
+        <div class="navbar navbar-default navbar-fixed-top" id="navbar">
+            <div class="navbar-container" id="navbar-container">
+                <div class="navbar-header pull-left">
+                    <a href="#" class="navbar-brand">
+                        <i class="icon-bug"></i>
+                        {{config.siteName}} Admin
+                        <small class="white"> - {{newVersion.ver}}</small>
+                    </a>
+                </div>
+                <div class="navbar-header pull-right" role="navigation">
+                    <ul class="nav ace-nav">
+                        <li class="grey">
+                            <a href="/" title="Redirect To Website.">
+                                <i class="icon-home"></i>
+                            </a>
+                        </li>
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <img class="nav-user-photo" ng-src="{{account.avatar}}">
+                                    <span class="user-info">
+                                        <small>Welcome,</small>
+                                        {{account.name}}
+                                    </span>
+                                <i class="icon-caret-down"></i>
+                            </a>
+                            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close" ng-controller="LoginCtrl">
+                                <li>
+                                    <a ng-click="logout()">
+                                        <i class="icon-off"></i>
+                                        Sign out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-container" id="main-container">
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <div class="sidebar sidebar-fixed" id="sidebar">
+                    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                            <button class="btn btn-success"></button>
+                            <button class="btn btn-info"></button>
+                            <button class="btn btn-warning"></button>
+                            <button class="btn btn-danger"></button>
+                        </div>
+                        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                            <span class="btn btn-success"></span>
+                            <span class="btn btn-info"></span>
+                            <span class="btn btn-warning"></span>
+                            <span class="btn btn-danger"></span>
+                        </div>
+                    </div>
+                    <ul class="nav nav-list">
+                        <li active-link="active">
+                            <a href="#">
+                                <i class="icon-dashboard"></i>
+                                <span class="menu-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li active-parent-link="open active">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-indent-right"></i>
+                                <span class="menu-text">Article</span>
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+                            <ul class="submenu">
+                                <li active-link="active">
+                                    <a href="article">
+                                        <i class="icon-double-angle-right"></i>
+                                        Manage
+                                    </a>
+                                </li>
+                                <li active-link="active">
+                                    <a href="channel">
+                                        <i class="icon-double-angle-right"></i>
+                                        Base Data
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li active-link="active">
+                            <a href="gallery">
+                                <i class="icon-picture"></i>
+                                <span class="menu-text">Gallery</span>
+                            </a>
+                        </li>
+                        <li active-parent-link="open active">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-gears"></i>
+                                <span class="menu-text">System</span>
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+                            <ul class="submenu">
+                                <li active-link="active">
+                                    <a href="system/user">
+                                        <i class="icon-double-angle-right"></i>
+                                        User
+                                    </a>
+                                </li>
+                                <li active-link="active">
+                                    <a href="system/history">
+                                        <i class="icon-double-angle-right"></i>
+                                        History
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="sidebar-collapse" id="sidebar-collapse">
+                        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                    </div>
+                    <script type="text/javascript">
+                        try { ace.settings.check('sidebar', 'collapsed'); } catch (e) { }
+                    </script>
+                </div>
+                <div class="main-content" ng-view=""></div>
+            </div>
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="icon-double-angle-up icon-only bigger-110"></i>
+            </a>
+        </div>
+    </div>
+
+    <div ng-show="__logoff" class="main-container" ng-controller="LoginCtrl">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div class="center">
+                            <h1>
+                                <img src="/img/logo.gif" alt="" width="36px" height="36px" style="margin-top: -6px;">
+                                <span class="red">{{config.siteName}}</span><span class="white"></span>
+                            </h1>
+                            <h4 class="blue">&copy; Zack Yang</h4>
+                        </div>
+
+                        <div class="space-6"></div>
+
+                        <div class="position-relative">
+                            <div id="login-box" class="login-box visible widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header blue lighter bigger">
+                                            <i class="icon-coffee green"></i>
+                                            Please Enter Your Information
+                                        </h4>
+
+                                        <div class="space-6"></div>
+
+                                        <form name="form" ng-submit="login()">
+                                            <fieldset>
+                                                <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="text" class="form-control" placeholder="Username" ng-model="user.UserName" required>
+                                                            <i class="icon-user"></i>
+                                                        </span>
+                                                </label>
+
+                                                <label class="block clearfix">
+                                                        <span class="block input-icon input-icon-right">
+                                                            <input type="password" class="form-control" placeholder="Password" ng-model="user.Password" required>
+                                                            <i class="icon-lock"></i>
+                                                        </span>
+                                                </label>
+
+                                                <div class="space"></div>
+
+                                                <div class="clearfix">
+                                                    <label class="inline">
+                                                        <input type="checkbox" class="ace" ng-init="user.IsRemember=false" ng-model="user.IsRemember">
+                                                        <span class="lbl"> Remember Me</span>
+                                                    </label>
+
+                                                    <button class="width-35 pull-right btn btn-sm btn-primary" ng-disabled="submitting || form.$invalid">
+                                                        <i ng-show="submitting" class="icon-spinner icon-spin icon-large"></i>
+                                                        <i ng-show="!submitting" class="icon-key"></i>
+                                                        Login
+                                                    </button>
+                                                </div>
+
+                                                <div class="space-4"></div>
+                                            </fieldset>
+                                        </form>
+
+                                        <div class="social-or-login center">
+                                            <span class="bigger-110 red">{{error}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="toolbar clearfix"><p>&nbsp;</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="__login || __logoff">
+        <div class="init-loading">
+            <div class="ball"></div>
+            <div class="ball1"></div>
+        </div>
+    </div>
+
+    <div modal="newVersion.showDialog" options="{backdrop: false,dialogFade:true}">
+    <div class="modal-dialog">
+        <form name="form" class="modal-content">
+            <div class="modal-header">
+                <i class="icon-bullhorn"></i>
+                New Version Has Been Release.
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <h3 class="blue">
+                            {{newVersion.ver}}
+                            <small>{{newVersion.date | date:'yyyy-MM-dd'}}</small>
+                        </h3>
+                    </div>
+                    <ul>
+                        <li ng-repeat="item in newVersion.content">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="system/history" class="btn btn-link" ng-click="versionClick()">
+                    More
+                </a>
+                <button type="button" class="btn btn-default btn-success btn-sm" ng-click="versionClick()">
+                    <i class="icon-ok"></i>
+                    Ok
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- Begin Templates -->
+<script type="text/ng-template" id="/app-admin/article/edit/article-edit.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin">Home</a>
+        </li>
+        <li><a href="article">Article</a></li>
+        <li class="active" ng-hide="entity.CreateDate">New</li>
+        <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Title"></span>)</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <form name="form" novalidate ng-submit="submit()" class="row article-detail">
+        <div class="col-lg-8">
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Title.$invalid}">
+                <label class="control-label">Title</label>
+                <div>
+                    <input type="text" class="form-control" name="Title" ng-model="entity.Title" ng-change="translateTitle()" required />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Url.$invalid,'has-warning':Translating}">
+                <label class="control-label">
+                    Url
+                    <span ng-show="Translating">
+                        <i class="icon-spinner icon-spin"></i>
+                    </span>
+                </label>
+                <div>
+                    <input type="text" class="form-control" name="Url" ng-model="entity.Url" required />
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': isSubmit && form.Content.$invalid}">
+                <label class="control-label">Content</label>
+                <div>
+                    <textarea ck-editor name="Content" ng-model="entity.Content" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <div>
+                    <textarea ck-editor name="Description" ng-model="entity.Description"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="sider">
+                <div>Action</div>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <button class="btn btn-primary btn-sm" ng-disabled="loading">Submit</button>
+                    </div>
+                    <div class="pull-right" ng-show="entity.CreateDate">
+                        <button type="button" class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sider">
+                <div>Thumbnail</div>
+                <div>
+                    <div ng-hide="entity.Thumbnail">
+                        <input type="file" ng-file-select />
+                    </div>
+                    <div ng-show="entity.Thumbnail">
+                        <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.Thumbnail | remoteImage}}" />
+                        <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeThumbnail()"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sider" ng-class="{'has-error': isSubmit && !channelValid()}">
+                <div>Channel</div>
+                <div>
+                    <label class="radio-inline" ng-repeat="item in channels.value">
+                        <input type="radio" value="{{item.ChannelId}}" ng-model="$parent.channelId"> {{item.Name}}
+                    </label>
+                </div>
+            </div>
+            <div class="sider" ng-class="{'has-error': isSubmit && !groupValid()}">
+                <div>Group</div>
+                <div>
+                    <label class="radio-inline" ng-repeat="item in getGroups() | filter:{IsDeleted:false}">
+                        <input type="radio" value="{{item.GroupId}}" ng-model="$parent.groupId"> {{item.Name}}
+                    </label>
+                    &nbsp;
+                </div>
+            </div>
+            <div class="sider">
+                <div>Tags</div>
+                <input type="text" class="form-control" ng-model="tags"/>
+                <p>Enter tags, separated by ","</p>
+            </div>
+            <div class="sider">
+                <div>Source</div>
+                <div>
+                    <div class="form-group">
+                        <label class="control-label">Url</label>
+                            <input type="text" class="form-control" ng-model="entity.Source"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/article/list/article-list.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li class="active">Article</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="text-right">
+        <a class="btn btn-primary btn-sm" href="article/new">
+            <i class="icon-plus"></i> New
+        </a>
+    </div>
+    <div class="hr hr-10 dotted hr-double"></div>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Thumbnail</th>
+                <th>Name</th>
+                <th>User</th>
+                <th>Channel</th>
+                <th>Group</th>
+                <th>Tags</th>
+                <th>Comments</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list.value" style="height: 51px;">
+                <td><img style="width: 24px;height: 15px;" ng-src="{{item.Thumbnail | remoteImage}}" ng-show="item.Thumbnail" /></td>
+                <td><a href="article('{{item.PostId}}')">{{item.Title}}</a></td>
+                <td>{{item.CreateUser}}</td>
+                <td>{{item.Group.Channel.Name}}</td>
+                <td>{{item.Group.Name}}</td>
+                <td>
+                    <span ng-repeat="tag in item.Tags">
+                        <span ng-hide="$first">,</span>
+                        <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}" title="查看 {{tag.Name}} 的全部文章">{{tag.Name}}</a>
+                    </span>
+                </td>
+                <td>{{item.ReplyCount}}</td>
+                <td>{{item.PubDate | date:"yyyy.MM.dd"}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div zy-odata-pager="list" class="text-center"></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/basedata/channel/basedata-channel.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+    <li class="active">Channels</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="text-right">
+        <button class="btn btn-primary btn-sm" type="button" ng-click="add()" >
+            <i class="icon-plus"></i> New Channel
+        </button>
+    </div>
+    <div class="hr hr-10 dotted hr-double"></div>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Default</th>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list.value">
+                <td><span ng-show="item.IsDefault"><i class="icon-ok"></i></span></td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Url}}</td>
+                <td>{{item.Description}}</td>
+                <td><a ng-href="channel('{{item.Url}}')/group">Groups</a></td>
+                <td>
+                    <div class="action-buttons">
+                        <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">
+                            <i class="icon-pencil bigger-130"></i>
+                        </a>
+                        <a class="red" href="JavaScript:void(0)" ng-click="remove(item)">
+                            <i class="icon-trash bigger-130"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div modal="editDialog" close="close()" options="{backdrop: true,dialogFade:true}">
+        <div class="modal-dialog">
+            <form name="form" class="modal-content" ng-submit="save()">
+                <div class="modal-header">
+                    Edit Channel
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Name</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Url</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Url" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="col-lg-9">
+                                <label>
+                                    <input type="checkbox" class="ace" ng-model="entity.IsDefault" />
+                                    <span class="lbl">Default</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm" ng-disabled="form.$invalid || loading">
+                        <i class="icon-save"></i>
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="close()">
+                        <i class="icon-undo"></i>
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/basedata/group/basedata-group.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li><a href="channel">Channel({{channel.Name}})</a></li>
+        <li class="active">Groups</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="text-right">
+        <button class="btn btn-primary btn-sm" type="button" ng-click="add()" >
+            <i class="icon-plus"></i> New Group
+        </button>
+    </div>
+    <div class="hr hr-10 dotted hr-double"></div>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list.value">
+                <td>{{item.Name}}</td>
+                <td>{{item.Url}}</td>
+                <td>{{item.Description}}</td>
+                <td>
+                    <div class="action-buttons">
+                        <a class="green" href="JavaScript:void(0)" ng-click="edit(item)">
+                            <i class="icon-pencil bigger-130"></i>
+                        </a>
+                        <a class="red" href="JavaScript:void(0)" ng-click="remove(item)">
+                            <i class="icon-trash bigger-130"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div modal="editDialog" close="close()" options="{backdrop: true,dialogFade:true}">
+        <div class="modal-dialog">
+            <form name="form" class="modal-content" ng-submit="save()">
+                <div class="modal-header">
+                    Edit Group
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Name</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Url</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="entity.Url" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm" ng-disabled="form.$invalid || loading">
+                        <i class="icon-save"></i>
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="close()">
+                        <i class="icon-undo"></i>
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/board/board.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li class="active">Message boards</li>
+    </ul>
+</div>
+
+<div class="page-content">
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/dashboard/dashboard.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li class="active">Dashboard</li>
+    </ul>
+</div>
+
+<div class="page-content">
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/gallery/edit/gallery-edit.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li><a href="gallery">Gallery</a></li>
+        <li class="active" ng-hide="entity.CreateDate">New</li>
+        <li class="active" ng-show="entity.CreateDate">Edit (<span bindonce="entity" bo-html="entity.Name"></span>)</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <tabset>
+        <tab heading="Base">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Name</label>
+                    <div class="col-lg-11">
+                        <input type="text" class="form-control" ng-model="entity.Name" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Description</label>
+                    <div class="col-lg-11">
+                        <textarea class="form-control" ng-model="entity.Description" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label"></label>
+                    <div class="col-lg-11">
+                        <label>
+                            <input class="ace" type="checkbox" ng-model="entity.IsHidden" />
+                            <span class="lbl"> Is Hidden</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label">Cover</label>
+                    <div class="col-lg-11">
+                        <div ng-hide="entity.Cover">
+                            <input type="file" ng-file-select />
+                        </div>
+                        <div ng-show="entity.Cover">
+                            <img class="img-thumbnail img-article-thumbnail" style="width: 160px;height: 120px;" ng-src="{{entity.Cover | remoteImage}}" />
+                            <a href="JavaScript:void(0)" class="icon-remove" ng-click="removeCover()"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-1 control-label"></label>
+                    <div class="col-lg-11">
+                        <button type="button" class="btn btn-primary" ng-click="submit()">
+                            <i class="icon-save"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </tab>
+        <tab heading="Photos" ng-if="entity.GalleryId">
+            <div ng-hide="uploadPhoto">
+                <div class="clearfix form-group">
+                    <button type="button" class="btn btn-primary pull-right" ng-click="uploadPhoto=true">
+                        <i class="icon-cloud-upload"></i>
+                        Upload
+                    </button>
+                </div>
+                <ul class="ace-thumbnails clearfix">
+                    <li ng-repeat="item in entity.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
+                        <a ng-href="{{item.Path | remoteImage}}" data-rel="colorbox">
+                            <img alt=""" ng-src="{{item.Thumbnail | remoteImage}}" style="width: 100px;height: 100px;" />
+                            <div class="tags">
+                                <span class="label-holder">
+                                    <span class="label label-info arrowed">{{item.Name}}</span>
+                                </span>
+                            </div>
+                        </a>
+                        <div class="tools tools-top">
+                            <a ng-href="{{item.Path | remoteImage}}" target="_blank">
+                                <i class="icon-link white"></i>
+                            </a>
+                            <a href="JavaScript:void(0)" ng-click="removePhoto(item)">
+                                <i class="icon-remove red"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="uploadPhoto">
+                <div class="clearfix form-group">
+                    <button type="button" class="btn btn-default pull-right" ng-click="get();uploadPhoto=false">
+                        <i class="icon-reply"></i>
+                        Back
+                    </button>
+                </div>
+                <form  zy-dropzone options="options"></form>
+
+            </div>
+        </tab>
+    </tabset>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/gallery/list/gallery-list.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li class="active">Gallery</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="text-right">
+        <a href="gallery/new" class="btn btn-primary btn-sm">
+            <i class="icon-plus"></i> New
+        </a>
+    </div>
+    <div class="hr hr-10 dotted hr-double"></div>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Cover</th>
+                <th>Name</th>
+                <th>Is Hidden</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in list.value">
+                <td><img style="width: 30px;height: 30px;" ng-src="{{item.Cover | remoteImage}}"/></td>
+                <td><a href="gallery('{{item.GalleryId}}')">{{item.Name}}</a></td>
+                <td><span ng-show="item.IsHidden"><i class="icon-ok"></i></span></td>
+                <td>{{item.Description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/system/401/index.tpl.html">
+<div class="well">
+    <h1 class="grey lighter smaller">
+        <span class="blue bigger-125">
+            <i class="icon-exclamation-sign"></i>
+            401
+        </span>
+        Access Denied.
+    </h1>
+
+    <hr>
+    <h3 class="lighter smaller">You do not have permission to view it.</h3>
+
+    <div>
+        <div class="space"></div>
+        <h4 class="smaller">Try one of the following:</h4>
+
+        <ul class="list-unstyled spaced inline bigger-110 margin-15">
+            <li>
+                <i class="icon-hand-right blue"></i>
+                Re-check the url for typos
+            </li>
+            <li>
+                <i class="icon-hand-right blue"></i>
+                Tell us about it
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+    <div class="space"></div>
+
+    <div class="center">
+        <a href="/" class="btn btn-primary">
+            <i class="icon-home"></i>
+            Home
+        </a>
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/system/404/index.tpl.html">
+<div class="well">
+    <h1 class="grey lighter smaller">
+											<span class="blue bigger-125">
+												<i class="icon-sitemap"></i>
+												404
+											</span>
+        Page Not Found
+    </h1>
+
+    <hr>
+    <h3 class="lighter smaller">We looked everywhere but we couldn't find it!</h3>
+
+    <div>
+        <div class="space"></div>
+        <h4 class="smaller">Try one of the following:</h4>
+
+        <ul class="list-unstyled spaced inline bigger-110 margin-15">
+            <li>
+                <i class="icon-hand-right blue"></i>
+                Re-check the url for typos
+            </li>
+            <li>
+                <i class="icon-hand-right blue"></i>
+                Tell us about it
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+    <div class="space"></div>
+
+    <div class="center">
+        <a href="/" class="btn btn-primary">
+            <i class="icon-home"></i>
+            Home
+        </a>
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/system/history/history.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li>System</li>
+        <li class="active">History</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="dialogs">
+        <div class="itemdiv dialogdiv" ng-repeat="item in versions">
+            <div class="user">
+                <img src="/img/upgrade.png">
+            </div>
+            <div class="body">
+                <div class="time">
+                </div>
+                <div class="name">
+                    <span class="blue">{{ item.ver }}</span>
+                    <i style="margin-left: 20px;" class="icon-time"></i>
+                    <span>{{ item.date | date:'yyyy-MM-dd' }}</span>
+                </div>
+                <div class="text">
+                    <div ng-repeat="detail in item.content">{{ detail }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app-admin/system/user/index.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home home-icon"></i>
+            <a href="/admin/">Home</a>
+        </li>
+        <li>System</li>
+        <li class="active">Users</li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="clearfix">
+        <div class="itemdiv memberdiv" ng-repeat="item in list" style="margin: 5px;">
+            <div class="user">
+                <img ng-src="{{item.Email | gravatar}}">
+            </div>
+            <div class="body">
+                <div>
+                    {{item.UserName}}
+                </div>
+                <div>
+                    <small class="grey">{{item.LoginName}}</small>
+                </div>
+                <div>
+                    <span class="label label-success label-sm">Normal</span>
+                    <span>
+                        <button class="btn btn-minier bigger btn-info btn-no-border" style="top: 1px;">
+                            <i class="icon-pencil icon-only"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>
+<!-- End Templates -->
+
+</body>
+</html>
