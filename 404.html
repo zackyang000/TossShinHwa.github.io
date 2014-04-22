@@ -1,0 +1,927 @@
+<!doctype html>
+<html ng-cloak="" ng-app="app" class="no-js" ng-controller="MainCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title ng-bind="title + ' | ' + config.siteName">Loading...</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - &#x6587;&#x7AE0;" href="/feed_articles.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - &#x8BC4;&#x8BBA;" href="/feed_comments.xml">
+    <!--STYLES-->
+    <link href="/index.css?v=1398082603091" rel="stylesheet">
+    <!--STYLES END-->
+    <!--SCRIPTS-->
+    <script src="/index.js?v=1398082603091"></script>
+    <!--SCRIPTS END-->
+    <!--LIVERELOAD-->
+</head>
+<body>
+<div class="loadingbox" zy-when-route-change="">{{'global.loading' | translate}}</div>
+
+<!--=== Top ===-->
+<div class="top" ng-controller="TopCtrl">
+    <div class="container">
+        <ul class="loginbar pull-right">
+            <li>
+                <i class="icon-globe"></i>
+                <a>Languages</a>
+                <ul class="lenguages" ng-controller="TranslateCtrl">
+                    <li ng-class="{active:uses=='en'}">
+                        <a href="#" ng-click="changeLanguage('en')">
+                            English
+                            <i class="icon-ok" ng-show="uses=='en'"></i>
+                        </a>
+                    </li>
+                    <li ng-class="{active:uses=='zh'}">
+                        <a href="#" ng-click="changeLanguage('zh')">
+                            简体中文
+                            <i class="icon-ok" ng-show="uses=='zh'"></i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="devider"></li>
+            <li>
+                <a href="/admin">
+                    <span ng-show="account">{{account.name}}</span>
+                    <span ng-hide="account">Admin</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Top ===-->
+
+<!--=== Header ===-->
+<div class="header" ng-controller="HeaderCtrl">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1>
+                    <a class="navbar-brand" href="/">
+                        <img id="logo-header" src="/img/logo.gif" alt="Logo">
+                        {{config.siteName}}
+                    </a>
+                </h1>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-class="{active:isActiveChannel(channel)}" ng-repeat="channel in Channels | orderBy:'IsDefault':true">
+                        <a ng-href="/list" ng-show="channel.IsDefault">{{channel.Name}}</a>
+                        <a ng-href="/list/{{channel.Url}}" ng-hide="channel.IsDefault">{{channel.Name}}</a>
+                    </li>
+                    <li ng-class="{active:isActive('/archives')}"><a ng-href="/archives">{{'global.menu.archive' | translate}}</a></li>
+                    <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+                    <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
+                    <li ng-class="{active:isActive('/about')}"><a ng-href="/about">{{'global.menu.about' | translate}}</a></li>
+                    <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
+                </ul>
+                <div class="search-open">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="key" ui-keyup="{13:'search()'}">
+                        <span class="input-group-btn">
+                            <button class="btn-u" type="button" ng-click="search()">Go</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=== End Header ===-->
+
+<!--=== Main ===-->
+<div class="body" ng-view=""></div>
+<!--=== End Main ===-->
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-21831838-1', 'woshinidezhu.com');
+    //ga('send', 'pageview');
+</script>
+
+
+<!-- Begin Templates -->
+<script type="text/ng-template" id="/app/about/about-newegg-bts.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.about' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.about' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="tag-box tag-box-v2">
+        <h2>About us</h2>
+        <p>我们是技术男，但是我们对生活充满激情，对技术充满热情。努力提升团队效率是我们持之以恒的目标。</p>
+    </div>
+
+    <div class="margin-bottom-50"></div>
+
+    <!--Our Team-->
+    <div class="headline"><h2>Meet Our Team</h2></div>    
+    <div class="row team" ng-repeat="row in members">
+        <div class="col-sm-3" ng-repeat="item in row">
+            <div class="thumbnail-style">
+                <img class="img-responsive" ng-src="{{item.avatar}}" alt="" />
+                <h3><a>{{item.ename}}</a> <small>{{item.cname}}</small></h3>
+                <p>{{item.desc}}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a ng-href="MailTo:{{item.email}}"><i class="icon-envelope"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--End Our Team-->
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/about/about-newegg-edi.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.about' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.about' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <!--Our Team-->
+    <div class="headline"><h2>Meet Our Team</h2></div>    
+    <div class="row team" ng-repeat="row in members">
+        <div class="col-sm-3" ng-repeat="item in row">
+            <div class="thumbnail-style">
+                <img class="img-responsive" ng-src="{{item.avatar}}" alt="" />
+                <h3><a>{{item.ename}}</a> <small>{{item.cname}}</small></h3>
+                <p>{{item.desc}}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a ng-href="MailTo:{{item.email}}"><i class="icon-envelope"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--End Our Team-->
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/about/about.tpl.html">
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.about' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.about' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row margin-bottom-30">
+        <div class="col-md-6">
+            <h4>我是谁?</h4>
+            <p>
+                我是Zack Yang，一名程序员。
+                一直致力写出优雅的代码，并执着于良好的用户体验。
+                如果你对我或者这个站点感兴趣，欢迎交流。
+                邮件是仍联络我最好的方式，没有之一，所有来信将认真回复。
+                <br>
+                <a href="MailTo:zackyang@outlook.com">zackyang@outlook.com</a>
+            </p>
+            <h4>这站点是什么?</h4>
+            <p>
+                这是一个纯手工自制的个人站点，展示着不断更新的私家收藏。<br />
+                我希望它能够带给大家欢乐与思考，也能够方便我们及时沟通。<br />
+                随时恭候各种指教，任何互动，无任欢迎。
+            </p>
+            <h4>为什么建立这个站点?</h4>
+            <p>
+                当我不能控制的收藏着一切欢乐与技术的时候。<br />
+                当这些不能控制的好料，在收藏夹中越来越多、难以整理的时候。<br />
+                当一次次发现我的私家珍藏，因为种种原因被删除，而怒发冲冠屏幕前的时候。<br />
+                当第三方博客越来越缺乏大爱精神，越来越多相关人士关怀照顾，不便使用的时候。<br />
+                既然谁都伤不起，就让我在做爱做的事情之余，发挥点专业余热。<br />
+                就像SHELDON所说，Because we can…于是就有了这个网站…
+            </p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=tossshinhwa&repo=cms&type=watch&count=true"
+                    allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+            <iframe src="http://ghbtns.com/github-btn.html?user=tossshinhwa&repo=cms&type=fork&count=true"
+                    allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
+        </div>
+
+        <div class="col-md-6">
+            <img class="img-responsive margin-bottom-20" src="/img/zack.jpg" alt="" />
+        </div>
+    </div>
+
+    <div class="row margin-bottom-40">
+        <div class="col-lg-12">
+            <div class="headline"><h2>Recent Works</h2></div>
+            <div class="portfolio-4-columns">   
+                <div class="row"> 
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                            <div class="thumbnail-img">
+                                <div class="overflow-hidden">
+                                    <img class="img-responsive" src="/img/works/api.png" alt="">
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h3>Newegg API Portal</h3>
+                                <p>Newegg开发者平台。提供供开发人员的API维护、监控功能；第三方开发者的授权申请和API文档查询等功能。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                            <div class="thumbnail-img">
+                                <div class="overflow-hidden">
+                                    <img class="img-responsive" src="/img/works/xfj.png" alt="">
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h3>房屋租凭管理系统</h3>
+                                <p>房屋租凭管理系统是一款集租赁、收回、收费、退款、租金统计、水电气管理、维修保洁管理等于一身的综合性专业管理软件。实现了出租、收款、统计、提醒等功能的完美结合。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                            <div class="thumbnail-img">
+                                <div class="overflow-hidden">
+                                    <img class="img-responsive" src="/img/works/318.png" alt="">
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h3>Project 318</h3>
+                                <p>军用信息化管理系统。该系统全国数百单位进行部署，使用卫星通讯进行数据交互，以"筹储供管修"为主导，提供针对物资全过程、全寿命追踪服务。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                            <div class="thumbnail-img">
+                                <div class="overflow-hidden">
+                                    <img class="img-responsive" src="/img/works/dxyw.png" alt="">
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h3>电信印务</h3>
+                                <p>印刷ERP系统。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=== End Content Part ===-->
+
+</script>
+
+<script type="text/ng-template" id="/app/article/archives/article-archives.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.archive' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.archive' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div id="archives">
+        <ul class="list-unstyled">
+            <li ng-repeat="item in list | orderBy:'-date'">
+                <h3 style="border-bottom: 1px solid #999">
+                    {{item.date}}
+                    <small>({{item.posts.length}})</small>
+                </h3>
+                <ul class="list-unstyled">
+                    <li ng-repeat="post in item.posts | orderBy:'-PubDate'">
+                        {{post.PubDate | date:"yyyy-MM-dd"}}
+                        »  
+                        <a href="/post/{{post.Url}}" title="{{post.channel}} - {{post.group}}">{{post.Title}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/article/common/article-post-header.tpl.html">
+<div class="blog-post-tags">
+    <ul class="list-unstyled list-inline blog-info">
+        <li><i class="icon-calendar"></i> {{item.PubDate | date:"yyyy/MM/dd"}}</li>
+        <li>
+            <i class="icon-bookmark"></i> 
+            <a ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a>
+        </li>
+        <li><i class="icon-pencil"></i> {{item.CreateUser}}</li>
+        <li><i class="icon-comments"></i> {{'article.comments_count' | translate:item}}</li>
+        <li><i class="icon-eye-open"></i> {{'article.views_count' | translate:item}}</li>
+        <li ng-show="item.Source">
+            <i class="icon-external-link"></i> 
+            <a  ng-href="{{item.Source}}" title="{{item.Source}}">{{'article.source' | translate}}</a>
+        </li>
+        <li ng-show="isAdmin">
+            <a href="JavaScript:void(0)" ng-click="edit(item)">{{'article.edit' | translate:item}}</a>
+        </li>
+    </ul>
+    <ul class="list-unstyled list-inline blog-tags" ng-show="item.Tags.length>0">
+        <li>
+            <i class="icon-tags"></i> 
+            <a ng-repeat="tag in item.Tags" ng-href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}/tag/{{tag.Name}}">{{tag.Name}}</a> 
+        </li>
+    </ul>   
+</div>
+<div class="blog-img" ng-if="item.Thumbnail">
+    <img class="img-responsive" ng-src="{{item.Thumbnail | remoteImage}}" alt="" />
+</div>
+</script>
+
+<script type="text/ng-template" id="/app/article/common/article-right-sidebar.tpl.html">
+<div class="magazine-sb-categories">
+    <div class="headline headline-md"><h2>Categories</h2></div>
+    <div class="row">
+        <ul class="list-unstyled col-xs-6">
+            <li ng-repeat="item in channel.Groups" ng-hide="item.IsDeleted">
+                <a ng-href="/list/{{channel.Url}}/{{item.Url}}" ng-hide="item.Name==group.Name">
+                    {{item.Name}}
+                </a>
+                <strong ng-show="item.Name==group.Name">
+                    {{item.Name}}
+                </strong>
+            </li>
+        </ul>                        
+        <ul class="list-unstyled col-xs-6">
+                      
+        </ul>                        
+    </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="/app/article/detail/article-detail.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">Blog</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li><a href="/list/{{item.Group.Channel.Url}}">{{item.Group.Channel.Name}}</a></li>
+            <li><a href="/list/{{item.Group.Channel.Url}}/{{item.Group.Url}}">{{item.Group.Name}}</a></li>
+            <li class="active">{{item.Title}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+	    <div class="col-md-9 md-margin-bottom-60">
+	        <!--Blog Post-->        
+	        <div class="blog margin-bottom-40">
+	            <h2>{{item.Title}}</h2>
+	            <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
+	            <p ng-bind-html-unsafe="item.Content"></p>
+	        </div>
+	        <!--End Blog Post-->        
+
+	        <hr>
+
+	        <!-- Recent Comments -->
+	        <div class="media">
+	            <h3>{{'article.comments' | translate}}</h3>
+	        </div>
+	        <div class="media" ng-repeat="item in item.Comments | orderBy:'CreateDate'" ng-hide="item.IsDeleted">
+	            <span class="pull-left">
+	                <img class="media-object" ng-src="{{item.Email | gravatar}}" alt="" />
+	            </span>
+	            <div class="media-body">
+	                <h4 class="media-heading">
+	                    {{item.Author}} 
+	                    <span>
+	                        {{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}
+	                        <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">
+	                            <i class="icon-remove"></i>
+	                        </a>
+	                    </span>
+	                </h4>
+	                <p ng-bind-html="item.Content | line"></p>
+	            </div>
+	            <hr/>
+	        </div>
+	        <!-- End Recent Comments -->
+
+	        <hr>
+
+	        <!-- Comment Form -->
+	        <div class="post-comment">
+	            <h3>{{'article.comment.content' | translate}}</h3>
+	            <form name="form" novalidate ng-submit="save()">
+	                <p bindonce="entity" bo-show="entity.Author">
+	                    {{'article.comment.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
+	                    <span>
+	                        <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'article.comment.hide' | translate}} »</a>
+	                        <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'article.comment.change' | translate}} »</a>
+	                    </span>
+	                </p>
+	                <div ng-show="editmode">
+	                    <div class="row form-group">
+	                        <div class="col-md-7 col-md-offset-0">
+	                            <label>{{'article.comment.name' | translate}} <span class="color-red">*</span></label>
+	                            <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'article.comment.name' | translate}}*" required/>
+	                            <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
+	                                <span ng-show="form.Author.$error.required">{{'article.comment.nameValidTxt' | translate}}</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="row form-group">
+	                        <div class="col-md-7 col-md-offset-0">
+	                            <label>{{'article.comment.email' | translate}}</label>
+	                            <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'article.comment.email' | translate}}" />
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row form-group">
+	                    <div class="col-md-11 col-md-offset-0">
+	                        <label>{{'article.comment.content' | translate}}</label>
+	                        <textarea name="Content" class="form-control" rows="8"  ng-model="entity.Content" required></textarea>
+	                        <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
+	                            <span ng-show="form.Content.$error.required">{{'article.comment.contentValidTxt' | translate}}</span>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div>
+	                    <button class="btn-u" type="submit" ng-disabled="loading">
+	                        {{'article.comment.submit' | translate}}
+	                    </button>
+	                </div>
+	            </form>
+	        </div>
+	        <!-- End Comment Form -->
+	    </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+	    <div class="col-md-3 magazine-page" ng-controller="ArticleDetailRightSidebarCtrl" ng-include="'/app/article/common/article-right-sidebar.tpl.html'">
+        </div>
+        <!-- End Right Sidebar -->
+    </div> 
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/article/list/article-list.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">
+            Blog
+        </h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li ng-if="params.channel && params.group"><a href="/list/{{params.channel}}">{{params.channel}}</a></li>
+            <li class="active" ng-if="params.channel && !params.group">{{params.channel}}</li>
+            <li ng-if="params.group && !(!params.tag && !params.key)"><a href="/list/{{params.channel}}/{{params.group}}">{{params.group}}</a></li>
+            <li class="active" ng-if="params.group && (!params.tag && !params.key)">{{params.group}}</li>
+            <li class="active" ng-if="params.tag">{{'article.breadcrumb.tag' | translate:params}}</li>
+            <li class="active" ng-if="params.key">{{'article.breadcrumb.key' | translate:params}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">	
+    <div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+        <div class="col-md-9 md-margin-bottom-60">
+            <!--Blog Post-->        
+            <div class="blog margin-bottom-40" ng-repeat="item in list.value">
+                <h2><a ng-href="/post/{{item.Url}}" ng-bind-html="item.Title | highlight:params.key"></a></h2>
+                <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
+                <p ng-bind-html-unsafe="item.Description"></p>
+                <p><a class="btn-u btn-u-small" ng-href="/post/{{item.Url}}"><i class="icon-plus-sign"></i> Read More</a></p>
+            </div>
+            <!--End Blog Post-->   
+            
+            <!--Pagination-->     
+            <div zy-odata-pager="list" class="text-center"></div>
+            <!--End Pagination-->
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+	    <div class="col-md-3 magazine-page" ng-controller="ArticleListRightSidebarCtrl" ng-include="'/app/article/common/article-right-sidebar.tpl.html'">
+        </div>
+        <!-- End Right Sidebar -->
+    </div>
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/board/board.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.board' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.board' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+        <div class="col-md-offset-2 col-md-8 md-margin-bottom-60">
+            <!-- Comment Form -->
+            <div class="post-comment">
+                <h3>{{'board.content' | translate}}</h3>
+                <form name="form" novalidate ng-submit="save()">
+                    <p bindonce="entity" bo-show="entity.Author">
+                        {{'board.welcome' | translate}}, <strong bo-html="entity.Author"></strong>
+                        <span>
+                            <a href="javascript:void(0);" ng-show="editmode" ng-click="editmode=!editmode">{{'board.hide' | translate}} »</a>
+                            <a href="javascript:void(0);" ng-hide="editmode" ng-click="editmode=!editmode">{{'board.change' | translate}} »</a>
+                        </span>
+                    </p>
+                    <div ng-show="editmode">
+                        <div class="row form-group">
+                            <div class="col-md-7 col-md-offset-0">
+                                <label>{{'board.name' | translate}} <span class="color-red">*</span></label>
+                                <input class="form-control" name="Author" type="text" ng-model="entity.Author" placeholder="{{'board.name' | translate}}*" required />
+                                <div class="label label-danger label-invalid" ng-show="form.Author.$invalid && submitted">
+                                    <span ng-show="form.Author.$error.required">{{'board.nameValidTxt' | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-7 col-md-offset-0">
+                                <label>{{'board.email' | translate}}</label>
+                                <input class="form-control" name="Email" type="text" ng-model="entity.Email" placeholder="{{'board.email' | translate}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-11 col-md-offset-0">
+                            <label>{{'board.content' | translate}}</label>
+                            <textarea name="Content" class="form-control" rows="8" ng-model="entity.Content" required></textarea>
+                            <div class="label label-danger label-invalid" ng-show="form.Content.$invalid && submitted">
+                                <span ng-show="form.Content.$error.required">{{'board.contentValidTxt' | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn-u" type="submit" ng-disabled="loading">
+                            {{'board.submit' | translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- End Comment Form -->
+
+            <hr>
+
+            <!-- Recent Comments -->
+            <div class="media" ng-repeat="item in list | orderBy:'-CreateDate'" ng-hide="item.IsDeleted">
+                <span class="pull-left">
+                    <img class="media-object" ng-src="{{item.Email | gravatar}}" alt="" />
+                </span>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        {{item.Author}} 
+                        <span>
+                            {{item.CreateDate | date:"yyyy.MM.dd HH:mm" }}
+                            <a href="JavaScript:void(0)" ng-click="remove(item)" ng-show="isAdmin">
+                                <i class="icon-remove"></i>
+                            </a>
+                        </span>
+                    </h4>
+                    <p ng-bind-html="item.Content | line"></p>
+                </div>
+                <hr/>
+            </div>
+            <!-- End Recent Comments -->
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+<!--        <div class="col-md-3 magazine-page">-->
+<!--            $1$ Search Bar #1#-->
+<!--            <div class="headline headline-md"><h2>Search</h2></div>            -->
+<!--            <div class="input-group margin-bottom-40">-->
+<!--                <input type="text" class="form-control" placeholder="Search">-->
+<!--                <span class="input-group-btn">-->
+<!--                    <button class="btn-u" type="button">Go</button>-->
+<!--                </span>-->
+<!--            </div>-->
+<!--            $1$ End Search Bar #1#-->
+<!---->
+<!--            $1$ Posts #1#-->
+<!--            <div class="posts margin-bottom-40">-->
+<!--                <div class="headline headline-md"><h2>Recent Posts</h2></div>-->
+<!--                <dl class="dl-horizontal">-->
+<!--                    <dt><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" /></a></dt>-->
+<!--                    <dd>-->
+<!--                        <p><a href="#">Responsive Bootstrap 3 Template placerat idelo alac eratamet.</a></p> -->
+<!--                    </dd>-->
+<!--                </dl>-->
+<!--                <dl class="dl-horizontal">-->
+<!--                    <dt><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" /></a></dt>-->
+<!--                    <dd>-->
+<!--                        <p><a href="#">100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.</a></p> -->
+<!--                    </dd>-->
+<!--                </dl>-->
+<!--                <dl class="dl-horizontal">-->
+<!--                    <dt><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" /></a></dt>-->
+<!--                    <dd>-->
+<!--                        <p><a href="#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p> -->
+<!--                    </dd>-->
+<!--                </dl>-->
+<!--            </div>$1$/posts#1#-->
+<!--            $1$ End Posts #1#-->
+<!---->
+<!--            $1$ Tabs Widget #1#-->
+<!--            <div class="headline headline-md"><h2>Tabs Widget</h2></div>-->
+<!--            <div class="tab-v2 margin-bottom-40">-->
+<!--                <ul class="nav nav-tabs">-->
+<!--                    <li class="active"><a data-toggle="tab" href="#home-1">About Us</a></li>-->
+<!--                    <li><a data-toggle="tab" href="#home-2">Quick Links</a></li>-->
+<!--                </ul>                -->
+<!--                <div class="tab-content">-->
+<!--                    <div id="home-1" class="tab-pane active">-->
+<!--                        <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.</p> <p>Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>                        -->
+<!--                    </div>-->
+<!--                    <div id="home-2" class="tab-pane magazine-sb-categories">-->
+<!--                        <div class="row">-->
+<!--                            <ul class="list-unstyled col-xs-6">-->
+<!--                                <li><a href="#">Best Sliders</a></li>-->
+<!--                                <li><a href="#">Parralax Page</a></li>-->
+<!--                                <li><a href="#">Backgrounds</a></li>-->
+<!--                                <li><a href="#">Parralax Slider</a></li>-->
+<!--                                <li><a href="#">Responsive</a></li>-->
+<!--                                <li><a href="#">800+ Icons</a></li>-->
+<!--                            </ul>                        -->
+<!--                            <ul class="list-unstyled col-xs-6">-->
+<!--                                <li><a href="#">60+ Pages</a></li>-->
+<!--                                <li><a href="#">Layer Slider</a></li>-->
+<!--                                <li><a href="#">Bootstrap 3</a></li>-->
+<!--                                <li><a href="#">Fixed Header</a></li>-->
+<!--                                <li><a href="#">Best Template</a></li>-->
+<!--                                <li><a href="#">And Many More</a></li>-->
+<!--                            </ul>                        -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>            -->
+<!--            $1$ End Tabs Widget #1#-->
+<!---->
+<!--            $1$ Photo Stream #1#-->
+<!--            <div class="headline headline-md"><h2>Photo Stream</h2></div>-->
+<!--            <ul class="list-unstyled blog-photos margin-bottom-30">-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/5.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/6.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/8.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/10.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/11.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/1.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/2.jpg"></a></li>-->
+<!--                <li><a href="#"><img class="hover-effect" alt="" src="assets/img/sliders/elastislide/7.jpg"></a></li>-->
+<!--            </ul>-->
+<!--            $1$ End Photo Stream #1#-->
+<!---->
+<!--            $1$ Blog Tags #1#-->
+<!--            <div class="headline headline-md"><h2>Blog Tags</h2></div>-->
+<!--            <ul class="list-unstyled blog-tags margin-bottom-30">-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Business</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Music</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Internet</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Money</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Google</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> TV Shows</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Education</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> People</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> People</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Math</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Photos</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Electronics</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Apple</a></li>-->
+<!--                <li><a href="#"><i class="icon-tags"></i> Canada</a></li>-->
+<!--            </ul>-->
+<!--            $1$ End Blog Tags #1#-->
+<!---->
+<!--            $1$ Blog Latest Tweets #1#-->
+<!--            <div class="blog-twitter margin-bottom-30">-->
+<!--                <div class="headline headline-md"><h2>Latest Tweets</h2></div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--                <div class="blog-twitter-inner">-->
+<!--                    <i class="icon-twitter"></i>-->
+<!--                    <a href="#">@htmlstream</a> -->
+<!--                    At vero eos et accusamus et iusto odio dignissimos. -->
+<!--                    <a href="#">http://t.co/sBav7dm</a> -->
+<!--                    <span>5 hours ago</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            $1$ End Blog Latest Tweets #1#-->
+<!--        </div>-->
+        <!-- End Right Sidebar -->
+    </div> 
+</div>
+<!--=== End Content Part ===-->
+
+
+</script>
+
+<script type="text/ng-template" id="/app/gallery/detail/gallery-detail.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{item.Name}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li><a href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
+            <li class="active">{{item.Name}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <blockquote class="hero" ng-show="item.Description">
+        <p>{{item.Description}}</p>
+    </blockquote>
+    <div class='gallery'>
+        <ul>
+            <li ng-repeat="photo in item.Photos | orderBy:'Name' | filter:{IsDeleted:false}">
+                <a href="{{photo.Path}}">
+                    <img src="{{photo.Thumbnail | remoteImage}}" alt="{{photo.Name}}">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/gallery/gallery.tpl.html">
+<div class="loadingbox" ng-show="loading">{{loading}}...</div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-30">
+    <div class="container">
+        <h1 class="pull-left">{{'global.menu.gallery' | translate}}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">{{'global.breadcrumb.home' | translate}}</a></li>
+            <li class="active">{{'global.menu.gallery' | translate}}</li>
+        </ul>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">   
+    <div class="row">
+        <div class="col-md-4" style="margin-bottom: 20px;" ng-repeat="item in list | filter:{IsHidden:false}">
+            <div class="view view-tenth">
+                <img class="img-responsive" ng-src="{{item.Cover | remoteImage}}" alt="" />
+                <div class="mask">
+                    <h2>{{item.Name}}</h2>
+                    <p>{{item.Description}}</p>
+                    <a href="/gallery/{{item.Name}}" class="info">Read More</a>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+<!--=== End Content Part ===-->
+</script>
+
+<script type="text/ng-template" id="/app/index/index.tpl.html">
+<!--=== Slider ===-->  
+<div class="layer_slider" ng-show="showBanner">
+    <div id="layerslider-container-fw">        
+        <div id="layerslider" style="width: 100%; height: 500px; margin: 0px auto; ">
+            <div class="ls-layer" style="slidedirection: top; ">
+                <img src="/img/bg_sky.jpg" class="ls-bg" alt="Slide background">
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:70px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 1500; durationout : 500; "></i> 
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:70px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 1500; durationout : 500; ">
+                    Fully Responsive and Easy to Customize
+                </span>
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:120px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 2500; durationout : 1500; "></i> 
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:120px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 2500; durationout : 1500; ">
+                    Revolution and Layer Slider Included 
+                </span>
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:170px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 3500; durationout : 3500; "></i> 
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:170px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 3500; durationout : 2500; ">
+                    1000+ Glyphicons Pro and Font Awesome Icons 
+                </span>
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:220px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 4500; durationout : 3500; "></i> 
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:220px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 4500; durationout : 3500; ">
+                    Revolution and Layer Slider Included 
+                </span>
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:270px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 5500; durationout : 4500; "></i> 
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:270px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 5500; durationout : 4500; ">
+                    60+ Template Pages and 20+ Plugins Included
+                </span>
+                <a class="btn-u btn-u-blue ls-s1" href="#" style="display:inline-block !important; padding: 9px 20px; font-size:25px; top:340px; left: 40px; slidedirection : bottom; slideoutdirection : bottom; durationin : 6500; durationout : 3500; ">
+                    Twitter Bootstrap 3
+                </a>
+                <img src="/img/avatar.png" alt="Slider Image" class="ls-s-1" style=" top:30px; left: 650px; slidedirection : right; slideoutdirection : bottom; durationin : 1500; durationout : 1500; ">
+            </div>
+        </div>         
+    </div>
+</div>
+<!--=== End Slider ===-->  
+
+<!--=== Content Part ===-->
+<div class="container">	
+
+</div>
+<!--=== End Content Part ===-->
+
+</script>
+<!-- End Templates -->
+
+</body>
+</html>
