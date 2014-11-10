@@ -19,7 +19,7 @@
 
 ##### 游戏平台 (AngularJS + NodeJS)
 
-该站点为用户提供游戏服务。* 使用 Angular 进行开发, 高度实现组件的可复用
+用户提供游戏服务。* 使用 Angular 进行开发, 高度实现组件的可复用
 ### 2013 – 2014, Newegg, China
 ##### developer.newegg.org (Newegg 数据开放平台) (knockout + ASP.NET WEB API) 
 Newegg 开发者平台. 提供 API 管理/维护/监控, 第三方开发者授权, API 查询等功能
