@@ -1,0 +1,36 @@
+# Zack Yang
+#### e-mail: [zackyang@outlook.com](mailto:zackyang@outlook.com)
+
+## 教育背景
+
+* 2006 - 2009 电子科技大学成都学院 计算机科学与技术(专)
+
+## 技能
+
+* 沉迷 Javascript* 2年框架及平台研发经验* 4年 ERP 开发及实施经验* GitHub 开源项目经验* MEAN + YEOMAN 开发经验* Angular, Knockout, Bootstrap, 响应式设计前端开发经验
+* ASP.NET WEB API, NodeJS, Python 后端开发经验* SQL Server, MongoDB, Cassandra 数据库经验* 重构, 持续集成, 领域驱动设计, 大数据, 分布式系统经验* 理解 HTTP 协议,深入认识 RESTful,API 设计经验* 技术培训及分享经验
+## 自我评价	
+* 对新技术敏感,极度注重用户体验* 沉迷重构,对写出漂亮代码有执着的追求
+* Github重度用户
+
+## 工作经验
+
+### 2014 – 至今, Synergy 88 Studios, Philippines
+
+##### 游戏平台 (AngularJS + NodeJS)
+
+该站点为用户提供游戏服务。* 使用 Angular 进行开发, 高度实现组件的可复用
+### 2013 – 2014, Newegg, China
+##### developer.newegg.org (Newegg 数据开放平台) (knockout + ASP.NET WEB API) 
+Newegg 开发者平台. 提供 API 管理/维护/监控, 第三方开发者授权, API 查询等功能
+* 负责多次改版, 引入主流web开发技术, 在界面响应/界面优化/用户体验方面都有一定提升* 使用 ASP.NET MVC 替换原有 ASP.NET Webform 并重构,以改善效率并提高可读性* 首次引入knockout进行基于JavaScript的双向绑定, 提高可维护性* 采用 ASP.NET WEB API 重构后端, 实现前后端分离* 首次引入 Bootstrap + FontFace 的方式进行 UI 构建,减少了针对 UI Team 的负荷
+##### Newkit.js (MongoDB + Express + Angular + NodeJS)
+公司内部各 team 业务系统的基础开发平台。提供框架的基础功能如公共 UI 库、登录验证、权限系统、应用配置存取、用
+户配置存取、日志系统等。可以一次部署,挂载多个业务模块(Modules)。使用 REST API 与后端通信,实现前后端分离。
+
+* 负责技术选型,框架设计及部分部件的实现* 首次引入 Grunt + Bower 进行前端构建,提高了构建与测试效率* 首次引入 AngularJS 进行前端编写,有效地提高了团队生产力* 使用RESTFul风格进行数据交换,显著的降低了Team间的耦合程度* 制定编码规范并多次进行技术培训,协助多个Team在该平台上按时完成相应的业务系统开发### 2012, 九洲电子, China
+##### 军方项目 "Project 318" (.NET Winform)
+该系统涉及全国数百单位上万人使用,采用卫星通信。以"筹储供管修"为主导,实现物资的全过程、全寿命追踪。* 实现子系统的开发,参与基础框架研发* 参与为期数月的项目试点工作,在现场修复BUG十余个* 引入 CI 系统,实现自动化构建、打包及分发, 极大的减轻了工作量### 2009 – 2011, 友嘉通信, China
+##### 汽车 4S 集团 ERP (.NET)
+该系统实现对 4S 店配件的进销存管理,以及修理的全过程控制。相应集团管理系统提供统计汇总,数据分析,决策支 持等数据挖掘功能。
+* 担任 team leader,负责需求调研,框架设计等* 首次引入 ASP.NET MVC,改善了项目结构,提高了代码的可维护性
