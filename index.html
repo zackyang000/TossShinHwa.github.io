@@ -9,10 +9,10 @@
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 评论" href="http://feed.woshinidezhu.com/comments.xml" />
     <link rel="shortcut icon" href="/img/favicon.ico" />
     <!--STYLES-->
-    <link href='/index.css?v=1415601234421' rel='stylesheet' />
+    <link href='/index.css?v=1415696939441' rel='stylesheet' />
     <!--STYLES END-->
     <!--SCRIPTS-->
-    <script src='/index.js?v=1415601234421'></script>
+    <script src='/index.js?v=1415696939441'></script>
     <!--SCRIPTS END-->
     <!--LIVERELOAD-->
 </head>
@@ -74,8 +74,8 @@
             <div class="collapse navbar-collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-class="{active:isActiveCategory(category)}" ng-repeat="category in categories | orderBy:'-main'">
-                        <a ng-href="/" ng-show="category.main">{{category.name}}</a>
-                        <a ng-href="/list/{{category.name}}" ng-hide="category.main">{{category.name}}</a>
+                        <a ng-href="/" ng-show="category.main">{{category.name | i18n}}</a>
+                        <a ng-href="/list/{{category.url}}" ng-hide="category.main">{{category.name | i18n}}</a>
                     </li>
                     <li ng-class="{active:isActive('/gallery')}"><a ng-href="/gallery">{{'global.menu.gallery' | translate}}</a></li>
                     <li ng-class="{active:isActive('/board')}"><a ng-href="/board">{{'global.menu.board' | translate}}</a></li>
