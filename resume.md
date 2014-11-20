@@ -15,5 +15,5 @@
 * 自动化工具: Grunt* 详见 [https://github.com/TossShinHwa/CMS](https://github.com/TossShinHwa/CMS)
 #### 2. node-odata NPM module, 用于轻松创建基于OData协议的REST APIs. 使开发人员更专注于处理业务逻辑.* 使用 Mocha + Should 进行自动化测试, 代码覆盖率超过90%
 * 遵循[OData V4](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html)协议实现* 详见 [https://github.com/TossShinHwa/node-odata](https://github.com/TossShinHwa/node-odata)
-* 发布于 [https://www.npmjs.org/package/node-odata](https://www.npmjs.org/package/node-odata)## 教育背景* 2006 - 2009 电子科技大学成都学院 计算机科学与技术 (专)## 自我评价* 热衷 Javascript* 爱折腾新技术
-* 注重用户体验* 沉迷重构 (强迫症+完美主义)* Github重度用户
+* 发布于 [https://www.npmjs.org/package/node-odata](https://www.npmjs.org/package/node-odata)## 教育背景* 2006 - 2009 电子科技大学成都学院 计算机科学与技术 (专)## 自我评价* 热衷 Javascript* 爱折腾
+* 注重用户体验 (完美主义)* 沉迷重构 (强迫症)* Github 重度用户
