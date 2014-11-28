@@ -10,10 +10,9 @@
 * 担任 team leader, 负责需求调研, 框架设计等* 首次引入 ASP.NET MVC, 改善了项目结构, 提高了代码的可维护性## 个人项目
 #### 1. 个人站点 [zackyang.com](http://zackyang.com)
 主要用于进行各种新技术的实验平台和代码积累, 顺便作为一个文章存档系统使用.
-* 前端进化: AJAX -> knockoutJS -> AngularJS
-* 后端进化: ASP.NET Webforom -> MVC -> WEB API -> NodeJS
-* 自动化工具: Grunt* 详见 [https://github.com/TossShinHwa/CMS](https://github.com/TossShinHwa/CMS)
-#### 2. node-odata NPM module, 用于轻松创建基于OData协议的REST APIs. 使开发人员更专注于处理业务逻辑.* 使用 Mocha + Should 进行自动化测试, 代码覆盖率超过90%
+
+* MongoDB + Express + AngularJS + NodeJS + Grunt* 详见 [https://github.com/TossShinHwa/CMS](https://github.com/TossShinHwa/CMS)
+#### 2. node-odata 一个NPM module, 用于轻松创建基于OData协议的REST APIs. 使开发人员更专注于处理业务逻辑.* 使用 Mocha + Should 进行自动化测试, 代码覆盖率超过90%
 * 遵循[OData V4](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html)协议实现* 详见 [https://github.com/TossShinHwa/node-odata](https://github.com/TossShinHwa/node-odata)
 * 发布于 [https://www.npmjs.org/package/node-odata](https://www.npmjs.org/package/node-odata)## 教育背景* 2006 - 2009 电子科技大学成都学院 计算机科学与技术 (专)## 自我评价* 爱折腾
 * 注重用户体验 (完美主义)* 沉迷重构 (强迫症)* Github 重度用户
