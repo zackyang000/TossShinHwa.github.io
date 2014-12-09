@@ -33,4 +33,4 @@ require("./bootstrap/registerOData")(app)
 #require("./bootstrap/test-data/init")()
 
 #start web server
-app.listen(process.env.PORT or 30022)
+app.listen(30002)
