@@ -1,6 +1,6 @@
 fs = require("fs")
 appPath = process.cwd()
-mongoose = require("mongoose")
+mongoose = require('node-odata').mongoose
 User = mongoose.model("User")
 
 initData = (model, path) ->
@@ -16,5 +16,4 @@ module.exports = ->
       initData(mongoose.model("Article"), "/bootstrap/test-data/article/article.json")
       initData(mongoose.model("Category"), "/bootstrap/test-data/article/category.json")
       initData(mongoose.model("Board"), "/bootstrap/test-data/board/board.json")
-      initData(mongoose.model("Tag"), "/bootstrap/test-data/common/tag.json")
       initData(mongoose.model("Gallery"), "/bootstrap/test-data/photo/gallery.json")
