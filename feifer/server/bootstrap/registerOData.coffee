@@ -15,7 +15,7 @@ userModel = require('../models/system/user')
 
 module.exports = (app) ->
   odata.set('app', app)
-  odata.set('db', 'mongodb://localhost/cms-dev')
+  odata.set('db', 'mongodb://localhost/cms-feifer')
 
   authAdminFn = (req) -> !!req.user
 
