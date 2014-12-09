@@ -30,7 +30,7 @@ app.use(express["static"](path.join(__dirname, "./static")))
 require("./bootstrap/registerOData")(app)
 
 #import test-data
-#require("./bootstrap/test-data/init")()
+require("./bootstrap/test-data/init")()
 
 #start web server
 app.listen(process.env.PORT or 30022)
