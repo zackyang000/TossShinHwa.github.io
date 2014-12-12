@@ -509,7 +509,7 @@ ul.blog-tags a:hover {
 @media (min-width: 767px) {
   /*Navbar*/
   .header .navbar-default .navbar-nav > li > a:hover,
-  .header .navbar-default .navbar-nav > .active > a {
+  .header .navbar-default .navbar-nav > li.active > a {
     border-bottom: solid 2px #3498db;
   }
 
