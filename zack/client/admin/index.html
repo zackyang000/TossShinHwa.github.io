@@ -327,8 +327,8 @@
                                                     </label>
 
                                                     <button class="width-35 pull-right btn btn-sm btn-primary" ng-disabled="submitting || form.$invalid">
-                                                        <i ng-show="submitting" class="fa fa-spinner fa-spin fa-large"></i>
-                                                        <i ng-show="!submitting" class="fa fa-key"></i>
+                                                        <i ng-show="loading" class="fa fa-spinner fa-spin fa-large"></i>
+                                                        <i ng-hide="loading" class="fa fa-key"></i>
                                                         Login
                                                     </button>
                                                 </div>
@@ -351,49 +351,14 @@
         </div>
     </div>
 
-    <div ng-cloak modal="newVersion.showDialog" options="{backdrop: false,dialogFade:true}">
-        <div class="modal-dialog">
-            <form name="form" class="modal-content">
-                <div class="modal-header">
-                    <i class="fa fa-bullhorn"></i>
-                    New Version Has Been Release.
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <div>
-                            <h3 class="blue">
-                                {{newVersion.ver}}
-                                <small>{{newVersion.date | date:'yyyy-MM-dd'}}</small>
-                            </h3>
-                        </div>
-                        <ul>
-                            <li ng-repeat="item in newVersion.content">
-                                {{item}}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="system/history" class="btn btn-link" ng-click="versionClick()">
-                        More
-                    </a>
-                    <button type="button" class="btn btn-default btn-success btn-sm" ng-click="versionClick()">
-                        <i class="fa fa-check"></i>
-                        Ok
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <script src="/plugin/ckeditor_4.4.5/ckeditor.js"></script>
     <script src="/plugin/EpicEditor-v0.2.2/js/epiceditor.js"></script>
     <script src="/plugin/dropzone.min.js"></script>
     <!--STYLES-->
-    <link href='/index.css?v=1416137518514' rel='stylesheet' />
+    <link href='/index.css?v=1418645150336' rel='stylesheet' />
     <!--STYLES END-->
     <!--SCRIPTS-->
-    <script src='/index.js?v=1416137518514'></script>
+    <script src='/index.js?v=1418645150336'></script>
     <!--SCRIPTS END-->
     <!--LIVERELOAD-->
 </body>
