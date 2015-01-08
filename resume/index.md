@@ -1,4 +1,4 @@
-# Zack Yange-mail: [zackyang@outlook.com](mailto:zackyang@outlook.com)github: [github.com/TossShinHwa](https://github.com/TossShinHwa)site: [zackyang.com](https://zackyang.com)## 技能* 2年框架及平台研发经验* 4年 ERP 开发及实施经验* MEAN + YEOMAN 开发经验* Angular, Knockout, Bootstrap, ionic 前端开发经验* .NET, NodeJS, Golang, Python 后端开发经验* NoSQL (Cassandra, Redis, Memcache, MongoDB) 应用经验* 持续集成, 领域驱动设计, 大数据存储, 分布式经验* 深入理解 HTTP 协议, RESTful API 实践经验* 多次组织及分享技术培训## 工作经验### 2014 – 至今, Synergy 88 Studios, Manila, Philippines#### 1. 游戏平台 (NodeJS + Angular + ionic + node-webkit)能安装到任意设备的游戏平台, 为用户提供一致的完美体验.* 负责架构设计* 前后端使用 RESTful API 进行通信* 基于 HTML5 + CSS3 开发
+# Zack Yange-mail: [zackyang@outlook.com](mailto:zackyang@outlook.com)github: [github.com/TossShinHwa](https://github.com/TossShinHwa)site: [zackyang.com](https://zackyang.com)## 技能* 2年前端开发平台研发经验* 4年 ERP 开发及实施经验* MEAN + YEOMAN 开发经验* Angular, Knockout, Bootstrap, ionic 前端开发经验* .NET, NodeJS, Golang, Python 后端开发经验* NoSQL (Cassandra, Redis, Memcache, MongoDB) 应用经验* 持续集成, 领域驱动设计, 大数据, 分布式经验* 深入理解 HTTP 协议, 大量 RESTful API 实践经验* 个人开源项目受到来自社区及微软的关注, 被官方组织收录* 公司内部大量组织及主持技术分享和培训## 工作经验### 2014 – 至今, Synergy 88 Studios, Manila, Philippines#### 1. 游戏平台 (NodeJS + Angular + ionic + node-webkit)能安装到任意设备的游戏平台, 为用户提供一致的完美体验.* 负责架构设计* 前后端使用 RESTful API 进行通信* 基于 HTML5 + CSS3 开发
 * 使用 node-webkit 编译为 OS X / windows / linux 桌面可执行文件
 * 使用 ionic 为 IOS / Android 编写 Hybird App### 2013 – 2014, Newegg, Chengdu, China
 #### 1. developer.newegg.org (knockout + ASP.NET WEB API)
@@ -15,10 +15,12 @@
 
 * MongoDB  + AngularJS + NodeJS + OData + Grunt
 * 前后端分离, 使用不同的域名进行部署* github: [CMS](https://github.com/TossShinHwa/CMS)
-#### 2. node-odata NPM module, 遵循OData协议创建的REST APIs, 使开发人员更专注于处理业务逻辑的处理.* [OData V4](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html) 协议的 NodeJS 实现* 使用 Mocha + Should 编写测试用例, 覆盖率超过90%* github: [node-odata](https://github.com/TossShinHwa/node-odata)
+#### 2. node-odata NPM module, 轻松创建遵循 OData 协议的REST APIs, 使开发人员更专注于处理业务逻辑的处理.* 基于 [OData V4](http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part1-protocol.html) 协议的 NodeJS 实现* 使用 Mocha + Should 编写测试用例, 代码覆盖率超过90%
+* 受到来自社区及微软的关注
+* 被收录于OData官网的 [Libraries](http://www.odata.org/libraries/) 中 * github: [node-odata](https://github.com/TossShinHwa/node-odata)
 * npm: [node-odata](https://www.npmjs.org/package/node-odata)## 教育背景* 2006 - 2009 电子科技大学成都学院 计算机科学与技术 (专)## 自我评价* 爱折腾
-* 基于完美主义的用户体验* 基于强迫症的代码重构* Github 重度用户* RSS Reader 重度用户
+* 基于完美主义的用户体验设计* 基于强迫症的代码重构行为* Github 重度用户* RSS Reader 重度用户
 ## 兴趣
 
 * 不玩微博, 不玩微信, 不玩 lol, 不玩 dota* 爱 StarCraft, 爱 MineCraft
-* 黑 XML, 黑 Android, 黑星座, 黑中医
+* 黑 Android, 黑星座, 黑中医
