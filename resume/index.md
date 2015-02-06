@@ -18,8 +18,9 @@
 #### 2. [node-odata](https://www.npmjs.org/package/node-odata)NPM module, 轻松创建遵循 OData 协议的REST APIs, 使开发人员更专注于处理业务逻辑的处理.* 基于 [OData V4](http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part1-protocol.html) 协议的 NodeJS 实现* 使用 Mocha + Should 编写测试用例, 代码覆盖率超过90%
 * 受到来自 NodeJS 社区, OData 社区及微软的关注
 * 被收录于 [OData 官网](http://www.odata.org/libraries/)* github: [node-odata](https://github.com/TossShinHwa/node-odata)## 教育背景* 2006 - 2009 电子科技大学成都学院 计算机科学与技术 (专)## 自我评价* 爱折腾
-* 基于完美主义的用户体验设计* 基于强迫症的代码重构行为* Github 重度用户* RSS Reader 重度用户
+* 基于完美主义的用户体验设计* 基于强迫症的代码重构行为* Github 重度用户* Digg Reader 重度用户* Vim 重度依赖
 ## 兴趣
 
-* 不玩微博, 不玩微信, 不玩 lol, 不玩 dota* 爱 StarCraft, 爱 MineCraft
-* 黑 Android, 黑星座, 黑中医
+* 无微博, 无微信, 不玩 LoL, 不玩 Dota
+* PHP 黑, Android 黑, 星座黑, 中医黑
+* Vim 粉, Chrome 粉, StarCraft 粉, MineCraft 粉 
