@@ -3,10 +3,15 @@
 [zackyang.com](http://zackyang.com)
 
 ## 经验
-* 2 年中国军方项目开发及部署经验* 2 年跨国电子商务平台开发及运维经验
-* 2 年海外工作经验## 技能* 5年 JavaScript 开发经验* Angular, Knockout, Ionic 前端开发经验* .NET, NodeJS, Golang, Python 后端开发经验* NoSQL (Cassandra, Redis, Memcache, MongoDB) 应用经验* 持续集成, 领域驱动设计, 大数据, 分布式, 行为驱动开发经验* 深刻理解 HTTP & REST, 大量 RESTful API 实践经验* 个人 REST 开源项目受到来自社区及微软的关注* 公司内部每周组织分享和培训## 工作经历### 2014 – 至今 Synergy88#### 1. 游戏平台 (NodeJS + Angular + ionic + node-webkit)能安装到任意设备的游戏平台, 为用户提供一致的完美体验.* 负责架构设计* 前后端使用 RESTful API 进行通信* 基于 HTML5 + CSS3 开发
+* 2 年军方项目研发经验* 2 年电子商务平台研发经验
+* 1 年海外研发经验## 技能* 5年 JavaScript 开发经验* Angular, React, Knockout, Ionic 前端开发经验* NodeJS, .NET, Golang, Python 后端开发经验* NoSQL (Cassandra, Redis, Memcache, MongoDB) 应用经验* 大数据, 持续交付, 领域驱动设计经验* 深刻理解 HTTP1.1/2 及 REST, 大量 RESTful API 实践经验* 发起的 REST 相关开源项目受到来自社区及微软的关注* 大量公司内部分享和培训经验## 工作经历### 2015 - 至今 阿里巴巴
+#### 数据技术及产品部-数据化运营技术部暂无
+### 2014 – 2015 Synergy88#### 1. 游戏平台脚手架搭建 (NodeJS + Angular + ionic + CEF)实现游戏平台能安装到任意设备, 为用户提供一致的完美体验.* 游戏平台与后端使用 WEB API 进行通信* 管理平台与后端使用 RESTful API 进行通信* 基于 HTML5 + CSS3 开发
 * 使用 CEF 编译为 OS X / windows / linux 桌面可执行文件
-* 使用 Ionic 为 IOS / Android 编写 Hybird App### 2013 – 2014 Newegg
+* 使用 Ionic 为 IOS / Android 编写 Hybird App#### 2. 房屋租凭管理系统 (NodeJS + Angular)
+
+房屋租凭管理系统是一款集租赁、收回、收费、退款、租金统计、水电气管理、维修保洁管理等于一身的综合性专业管理软件。实现了出租、收款、统计、提醒等功能的完美结合。
+* 独立设计与开发### 2013 – 2014 Newegg
 #### 1. developer.newegg.org (knockout + ASP.NET WEB API)
 Newegg 数据开放平台. 提供 API 管理/维护/监控, 第三方开发者授权, API 查询等功能. 该平台成为 Neweeg 分布式架构的枢纽.
 * 负责多次改版, 引入主流 web 开发技术, 在界面响应/界面优化/用户体验方面都有一定提升* 使用 ASP.NET MVC 替换原有 ASP.NET Webform 并重构, 以改善开发效率并提高可读性* 首次引入 Knockout 进行基于 JavaScript 的双向绑定, 提高可维护性* 首次引入 Bootstrap + font-face 的方式进行 UI 构建, 减少了针对 UI Team 的负荷* 采用 ASP.NET WEB API 重构后端, 实现前后端分离
