@@ -25,6 +25,20 @@ server {
      } 
 }
 
+# ppt
+server {
+  listen 80;
+
+  server_name ppt.zackyang.com;
+
+     root /home/azureuser/wwwroot/ppt;
+     index index.html index.htm;
+
+     location / {
+          try_files $uri $uri/ =404;
+          error_page 404 /index.html;
+     } 
+}
 
 ############## zackyang ##############
 # zackyang server
