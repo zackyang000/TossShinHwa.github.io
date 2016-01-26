@@ -11,32 +11,33 @@
 
 ## 工作经验
 - 2 年军方涉密项目开发经验
-- 3 年电子商务平台开发经验
+- 2 年电子商务平台开发经验
 - 1 年海外研发经验
+- 1 年阿里巴巴大数据开发经验
 
 
 ## 技能
 
-- 5 年 JavaScript 开发经验, 熟练使用 ECMAScript 6/7 新特性开发
-- Angular, React, Knockout, Ionic 前端开发经验
+- 5 年 JavaScript 开发经验, 熟练使用 ECMAScript 6&7 新特性开发
+- React, React-Native, Angular, Knockout, Ionic 前端开发经验
 - NodeJS, .NET(C#), Golang, Python 后端开发经验
 - Cassandra, Redis, MongoDB 应用经验
 - 大数据, 持续交付, 领域驱动设计, 函数式编程经验
 - 深刻理解 HTTP1.1/2.0 及 REST, 大量 RESTful API 实践经验
-- 发起的 REST 相关开源项目受到来自社区及微软的关注
+- 发起的 REST 相关开源项目受到来自社区的关注及并被微软收录于官网
 - 超过 20 场次公司内部分享和培训经验
 
 ## 工作经历
 
 ### 2015.08 - 至今 阿里巴巴
-#### 数据技术及产品部 - Onekit (React + Redux)
+#### 数据技术及产品部 - cuz (React + Redux)
 
-统一团队内部前端框架, 规范前端开发流程, 提供公共 UI 库, 并支持完整的可视化解决方案, 最终以提高开发效率.
+统一团队内部前端框架, 规范前端开发流程, 提供公共 UI 库, 并支持完整的可视化解决方案, 显著提高开发效率
 
 - 负责技术选型, 分析可行性, 主导开发
-- 采用 Webpack 构建, 实现了模块热加载的能力, 极大的简化了调试工作
-- 使用 ECMAScript 6 & 7 语法, 显著的降低了代码量, 提高了代码的可维护性与可读性
-- 使用 React + React Natice,  有效的降低了无线开发的学习成本, 统一了 PC 端与无线端的技术栈
+- 采用 Webpack 构建, 实现了模块热加载的能力, 提供命令行构建集成工具, 极大的简化了调试工作
+- 使用 ECMAScript 6&7 语法, 显著的降低了代码量, 提高了代码的可维护性与可读性
+- 封装 React Natice,  有效的降低了无线开发的学习成本, 统一了 PC 端与无线端的技术
 - 制定前后端 API 通信规范, 降低前后端团队耦合性
 
 
@@ -44,11 +45,10 @@
 
 #### 爬虫系统 (NodeJS)
 
-用于爬取其它游戏平台相关数据.
+用于爬取游戏平台相关数据.
 
-- 独立设计与开发
-- 功能包括爬取, 分析, 比较, 过滤以及主动推送
 - 基于 NodeJS
+- 功能包括爬取, 分析, 比较, 过滤以及主动推送
 - 支持分布式部署
 
 
@@ -97,7 +97,7 @@
 
 NPM module, OData 协议 NodeJS 实现, 用于快速创建 RESTful API.
 
-- 基于 OData V4 协议实现
+- 基于 OData v4 协议实现
 - 单元测试代码覆盖率超过 80%
 - 收录于 [OData] 官网(http://www.odata.org/libraries/)
 
@@ -130,6 +130,6 @@ NPM module, OData 协议 NodeJS 实现, 用于快速创建 RESTful API.
 
 ## 自我评价
 - 开发环境 = iTerm + Tmux + zsh + Vim + git
-- 准则 = 完美主义, 强迫症
-- 学习 = (RSS reader over 1000 items + 坚持翻墙 + 阅读 1H) /天
+- 准则 = 完美主义 + 强迫症
+- 学习 = (RSS reader over 1000 items + 坚持翻墙 + 读书 1H) / 天
 
